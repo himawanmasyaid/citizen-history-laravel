@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             ArticleSeeder::class,
-            EntrepreneurSeeder::class
+            EntrepreneurSeeder::class,
+            TourSeeder::class
         ]);
     }
 }

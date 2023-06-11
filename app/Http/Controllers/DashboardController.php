@@ -3,13 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
+use App\Models\Entrepreneur;
+use App\Models\Tour;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index() {
-        return view('dashboard.dashboard', [
-            'title' => "Halaman Dashboard"
+
+        $data = [
+            'userCount' => User::count(),
+            'articleCount' => Article::count(),
+            'tourCount' => Tour::count(),
+            'entrepreneurCount' => Entrepreneur::count(),
+        ];
+
+        return view('dashboard.dashboard', $data, [
+            'title' => "Dashboard"
         ]);
     }
 }

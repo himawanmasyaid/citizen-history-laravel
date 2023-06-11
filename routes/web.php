@@ -3,6 +3,8 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EntrepreneurController;
+use App\Http\Controllers\TourController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +32,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::resource('/dashboard/articles', ArticleController::class);
-
 Route::resource('/dashboard/entrepreneurs', EntrepreneurController::class);
+Route::resource('/dashboard/tours', TourController::class);
+Route::resource('/dashboard/users', UserController::class);

@@ -7,16 +7,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form method="post" action="/dashboard/articles" class="mb-5" enctype="multipart/form-data">
+                <form method="post" action="/dashboard/users" class="mb-5" enctype="multipart/form-data">
                     @csrf
 
-                    {{-- title --}}
+                    {{-- name --}}
                     <div class="form-group row mb-4 mt-4">
-                        <label for="title" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
-                        <div class="col-sm-12 col-md-7">
-                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                                name='title' value="{{ old('title') }}">
-                            @error('title')
+                        <label for="name" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name</label>
+                        <div class="col-sm-12 col-md-4">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                                name='name' value="{{ old('name') }}">
+                            @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -24,14 +24,14 @@
                         </div>
                     </div>
 
-                    {{-- image --}}
+                    {{-- username --}}
                     <div class="form-group row mb-4 mt-4">
-                        <label for="image" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Desc</label>
-                        <div class="col-sm-12 col-md-7">
-                            <img class="img-preview img-fluid mb-3 col-sm-5">
-                            <input class="form-control @error('id') is-invalid @enderror" type="file" id="image"
-                                name="image" onchange="previewImage()">
-                            @error('image')
+                        <label for="username"
+                            class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Username</label>
+                        <div class="col-sm-12 col-md-4">
+                            <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                id="username" name='username' value="{{ old('username') }}">
+                            @error('username')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -39,23 +39,27 @@
                         </div>
                     </div>
 
-                    {{-- body --}}
+                    {{-- password --}}
                     <div class="form-group row mb-4 mt-4">
-                        <label for="body" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Body</label>
-                        <div class="col-sm-12 col-md-7">
-                            @error('body')
-                            <p class="text-danger">{{ $message }}</p>
+                        <label for="password"
+                            class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Password</label>
+                        <div class="col-sm-12 col-md-4">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                id="password" name='password'>
+                            @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
                             @enderror
-                            <input id="body" type="hidden" name="body" value="{{ old('body') }}">
-                            <trix-editor input="body"></trix-editor>
                         </div>
                     </div>
+
 
                     {{-- button --}}
                     <div class="form-group row mb-4">
                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                         <div class="col-sm-12 col-md-7">
-                            <button type="submit" class="btn btn-primary">Create Article</button>
+                            <button type="submit" class="btn btn-primary">Add User</button>
                         </div>
                     </div>
                 </form>

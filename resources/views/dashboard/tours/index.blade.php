@@ -15,22 +15,23 @@
             <table class="table table-bordered table-md">
                 <thead>
                     <tr>
+
                         <th scope="col">No</th>
-                        <th scope="col">Title</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($articles as $article)
+                    @foreach ($tours as $tour)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $article->title }}</td>
+                        <td>{{ $tour->title }}</td>
                         <td>
-                            <a href="/dashboard/articles/{{ $article->id }}" class="badge bg-info"><i
+                            <a href="/dashboard/tours/{{ $tour->id }}" class="badge bg-info"><i
                                     class="fas fa-eye"></i></a>
-                            <a href="/dashboard/articles/{{ $article->id }}/edit" class="badge bg-warning"><i
+                            <a href="/dashboard/tours/{{ $tour->id }}/edit" class="badge bg-warning"><i
                                     class="fas fa-edit"></i></span></a>
-                            <form action="/dashboard/articles/{{ $article->id }}" method="post" class="d-inline">
+                            <form action="/dashboard/tours/{{ $tour->id }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="bagde bg-danger border-0 rounded"

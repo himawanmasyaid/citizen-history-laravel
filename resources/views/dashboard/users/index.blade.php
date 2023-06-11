@@ -15,22 +15,25 @@
             <table class="table table-bordered table-md">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Action</th>
+
+                        <th scope="col" class="col-md-2">No</th>
+                        <th scope="col" class="col-md-4">Name</th>
+                        <th scope="col" class="col-md-3">Username</th>
+                        <th scope="col" class="col-md-3">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($articles as $article)
+                    @foreach ($users as $user)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $article->title }}</td>
-                        <td>
-                            <a href="/dashboard/articles/{{ $article->id }}" class="badge bg-info"><i
-                                    class="fas fa-eye"></i></a>
-                            <a href="/dashboard/articles/{{ $article->id }}/edit" class="badge bg-warning"><i
+                        <td class="col-md-2">{{ $loop->iteration }}</td>
+                        <td class="col-md-4">{{ $user->name }}</td>
+                        <td class="col-md-3">{{ $user->username }}</td>
+                        <td class="col-md-3">
+                            {{-- <a href="/dashboard/users/{{ $user->id }}" class="badge bg-info"><i
+                                    class="fas fa-eye"></i></a> --}}
+                            <a href="/dashboard/users/{{ $user->id }}/edit" class="badge bg-warning"><i
                                     class="fas fa-edit"></i></span></a>
-                            <form action="/dashboard/articles/{{ $article->id }}" method="post" class="d-inline">
+                            <form action="/dashboard/users/{{ $user->id }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="bagde bg-danger border-0 rounded"

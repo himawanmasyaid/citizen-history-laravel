@@ -29,9 +29,11 @@ class ArticleController extends Controller
             'body' => 'required'
         ]);
         
-        $imgName = $request->file('image')->hashName();
-        $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
-
+        if($request->file('image')) {
+            $imgName = $request->file('image')->hashName();
+            $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
+        }
+        
         Article::create($validated);
 
         return redirect('/dashboard/articles')->with('success', 'Artikel Berhasil Ditambahkan');

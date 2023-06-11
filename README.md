@@ -4,10 +4,14 @@
 
 Web Route
 
--   CRUD Articles
--   CRUD Entrepreneurs
+-   Articles
+-   Entrepreneurs
+-   Virtual Tour
+-   User
 
 API Route
 
--   CRUD Articles
--   CRUD Entrepreneurs
+-   Articles
+-   Entrepreneurs
+-   Virtual Tour
+-   User
