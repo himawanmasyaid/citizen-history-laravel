@@ -1,11 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TourController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EntrepreneurController;
-use App\Http\Controllers\TourController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,13 @@ use Illuminate\Support\Facades\Route;
 //     return view('dashboard.articles.create');
 // });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::resource('/dashboard/articles', ArticleController::class);
-Route::resource('/dashboard/entrepreneurs', EntrepreneurController::class);
-Route::resource('/dashboard/tours', TourController::class);
-Route::resource('/dashboard/users', UserController::class);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+Route::resource('/dashboard/articles', ArticleController::class)->middleware('auth');
+Route::resource('/dashboard/entrepreneurs', EntrepreneurController::class)->middleware('auth');
+Route::resource('/dashboard/tours', TourController::class)->middleware('auth');
+Route::resource('/dashboard/users', UserController::class)->middleware('auth');

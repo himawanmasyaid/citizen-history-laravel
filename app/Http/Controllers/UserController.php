@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -36,5 +37,20 @@ class UserController extends Controller
 
         return redirect('/dashboard/users')->with('success', 'User berhasil ditambahkan');
 
+    }
+
+    public function destroy(User $user)
+    {
+        $userLogin = Auth::id();
+        
+        if($user->id = $userLogin) {
+            return back()->with('error', 'Tidak bisa menghapus user yang sedang login');
+        } else {
+
+            User::destroy($user->id);
+    
+            return redirect('/dashboard/users')->with('success', 'User Berhasil Dihapus');
+        }
+        
     }
 }
