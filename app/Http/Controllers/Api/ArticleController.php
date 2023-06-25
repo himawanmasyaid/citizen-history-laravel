@@ -24,32 +24,32 @@ class ArticleController extends Controller
         return new ArticleResource($article);
     }
 
-    public function store(Request $request) {
-        $validated = $request->validate([
-            'title' => 'required',
-            'image' =>'image|file',
-            'body' => 'required'
-        ]);
+    // public function store(Request $request) {
+    //     $validated = $request->validate([
+    //         'title' => 'required',
+    //         'image' =>'image|file',
+    //         'body' => 'required'
+    //     ]);
 
-        $imgName = $request->file('image')->hashName();
-        $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
+    //     $imgName = $request->file('image')->hashName();
+    //     $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
 
-        Article::create($validated);
-    }
+    //     Article::create($validated);
+    // }
 
-    public function update(Request $request, $id) {
-        $validated = $request->validate([
-            'title' => 'required',
-            'body' => 'required'
-        ]);
+    // public function update(Request $request, $id) {
+    //     $validated = $request->validate([
+    //         'title' => 'required',
+    //         'body' => 'required'
+    //     ]);
 
-        $article = Article::findOrFail($id);
-        $article->update($request->all());
-    }
+    //     $article = Article::findOrFail($id);
+    //     $article->update($request->all());
+    // }
 
-    public function destroy($id) {
-        $article = Article::findOrFail($id);
-        $article->delete();
-    }
+    // public function destroy($id) {
+    //     $article = Article::findOrFail($id);
+    //     $article->delete();
+    // }
 
 }
