@@ -15,3 +15,10 @@ API Route
 -   Entrepreneurs
 -   Virtual Tour
 -   User
+
+Installation
+-git clone
+-composer update
+-rename .env.example to .env
+-php artisan key:generate
+-php artisan serve
