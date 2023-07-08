@@ -17,8 +17,9 @@ API Route
 -   User
 
 Installation
--git clone
--composer update
--rename .env.example to .env
--php artisan key:generate
--php artisan serve
+
+-   git clone
+-   composer update
+-   rename .env.example to .env
+-   php artisan key:generate
+-   php artisan serve
