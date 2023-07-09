@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -40,3 +41,7 @@ Route::resource('/dashboard/articles', ArticleController::class)->middleware('au
 Route::resource('/dashboard/entrepreneurs', EntrepreneurController::class)->middleware('auth');
 Route::resource('/dashboard/tours', TourController::class)->middleware('auth');
 Route::resource('/dashboard/users', UserController::class)->middleware('auth');
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
