@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="container-fluid">
-    <div class="row">
+    <div class="row card">
         <div class="col-lg-8 ">
             <article>
                 <a href="/dashboard/entrepreneurs" class="btn bg-info mb-3">Kembali</a>
