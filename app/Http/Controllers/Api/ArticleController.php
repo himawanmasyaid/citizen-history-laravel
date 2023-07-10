@@ -13,8 +13,6 @@ class ArticleController extends Controller
     public function index() {
         $articles = Article::all();
 
-        // return response()->json($articles);
-
         return ArticleResource::collection($articles);
     }
 

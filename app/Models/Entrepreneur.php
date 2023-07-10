@@ -10,6 +10,6 @@ class Entrepreneur extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'desc', 'address', 'no_telp', 'maps'
+        'name', 'image', 'desc', 'address', 'no_telp', 'maps'
     ];
 }

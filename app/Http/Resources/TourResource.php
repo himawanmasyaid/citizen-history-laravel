@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class TourResource extends JsonResource
 {
@@ -14,10 +15,12 @@ class TourResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // return parent::toArray($request);
+        $urlImage = url(Storage::url($this->image));
+
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'image' => $urlImage,
             'desc' => $this->desc,
             'video' => $this->address,
         ];

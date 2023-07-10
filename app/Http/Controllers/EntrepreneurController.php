@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Entrepreneur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EntrepreneurController extends Controller
 {
@@ -24,11 +25,17 @@ class EntrepreneurController extends Controller
     public function store(Request $request) {
         $validated = $request->validate([
             'name' => 'required',
+            'image' => 'image|file',
             'desc' =>'required',
             'address' => 'required',
             'no' => 'nullable',
             'maps' => 'nullable'
         ]);
+
+        if($request->file('image')) {
+            $imgName = $request->file('image')->hashName();
+            $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
+        }
 
         Entrepreneur::create($validated);
 
@@ -52,13 +59,24 @@ class EntrepreneurController extends Controller
 
     public function update(Request $request, Entrepreneur $entrepreneur) {
         
-        $validated = $request->validate([
+        $rules = [
             'name' => 'required',
+            'image' => 'image|file',
             'desc' =>'required',
             'address' => 'required',
             'no' => 'nullable',
             'maps' => 'nullable'
-        ]);
+        ];
+
+        $validated = $request->validate($rules);
+
+        if($request->file('image')) {
+            if($request->oldImage) {
+                Storage::disk('public')->delete($entrepreneur->image);
+            }
+            $imgName = $request->file('image')->hashName();
+            $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
+        };
 
         Entrepreneur::where('id', $entrepreneur->id)
             ->update($validated);

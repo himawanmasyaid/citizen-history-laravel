@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('desc');
+            $table->string('image')->nullable();
+            $table->text('desc');
             $table->string('video')->nullable();
             $table->timestamps();
         });

@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleResource extends JsonResource
 {
@@ -14,12 +15,13 @@ class ArticleResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // return parent::toArray($request);
 
+        $urlImage = url(Storage::url($this->image));
+        
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'image' => $this->image,
+            'image' => $url = $urlImage,
             'body' => $this->body,
         ];
     }

@@ -26,9 +26,14 @@ class TourController extends Controller
     public function store(Request $request) {
         $validated = $request->validate([
             'title' => 'required',
+            'image' => 'image|file',
             'desc' => 'required',
             'video' => 'video|file',
         ]);
+        if($request->file('image')) {
+            $imgName = $request->file('image')->hashName();
+            $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
+        }
         
         if($request->file('video')) {
             $vidName = $request->file('video')->hashName();

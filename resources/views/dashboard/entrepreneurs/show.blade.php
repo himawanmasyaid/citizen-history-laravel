@@ -12,6 +12,13 @@
                     @csrf
                     <button class="btn btn-danger mb-3" onclick="return confirm('Are you sure ?')">Hapus</button>
                 </form>
+                @if ($entrepreneur->image)
+                <img src="{{ asset('storage/' . $entrepreneur->image) }}" class="card-img"
+                    alt="{{ $entrepreneur->food }}">
+                @else
+                <img src="https://source.unsplash.com/1200x400?{{ $article->food }}" class="card-img"
+                    alt="{{ $article->food }}">
+                @endif
                 <p>{!! $entrepreneur->name !!}</p>
                 <p>{!! $entrepreneur->desc !!}</p>
                 <p>{!! $entrepreneur->address !!}</p>

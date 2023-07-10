@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('entrepreneurs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('desc');
+            $table->string('image')->nullable();
+            $table->text('desc');
             $table->string('address');
             $table->string('no')->nullable();
             $table->string('maps')->nullable();

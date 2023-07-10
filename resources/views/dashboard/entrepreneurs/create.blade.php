@@ -23,6 +23,21 @@
                         </div>
                     </div>
 
+                    {{-- image --}}
+                    <div class="form-group row mb-4 mt-4">
+                        <label for="image" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image</label>
+                        <div class="col-sm-12 col-md-7">
+                            <img class="img-preview img-fluid mb-3 col-sm-5">
+                            <input class="form-control @error('id') is-invalid @enderror" type="file" id="image"
+                                name="image" onchange="previewImage()">
+                            @error('image')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+
                     {{-- desc --}}
                     <div class="form-group row mb-4 mt-4">
                         <label for="desc" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Desc</label>
@@ -79,7 +94,7 @@
                     <div class="form-group row mb-4">
                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                         <div class="col-sm-12 col-md-7">
-                            <button type="submit" class="btn btn-primary">Create Post</button>
+                            <button type="submit" class="btn btn-primary">Create Entrepreneurs</button>
                         </div>
                     </div>
                 </form>
