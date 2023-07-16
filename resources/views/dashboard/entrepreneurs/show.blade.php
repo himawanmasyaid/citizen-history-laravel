@@ -16,8 +16,8 @@
                 <img src="{{ asset('storage/' . $entrepreneur->image) }}" class="card-img"
                     alt="{{ $entrepreneur->store }}">
                 @else
-                <img src="https://source.unsplash.com/1200x400?{{ $entrepreur->store }}" class="card-img"
-                    alt="{{ $entrepreur->store }}">
+                <img src="https://source.unsplash.com/1200x400?{{ $entrepreneur->store }}" class="card-img"
+                    alt="{{ $entrepreneur->store }}">
                 @endif
                 <p>{!! $entrepreneur->name !!}</p>
                 <p>{!! $entrepreneur->desc !!}</p>
