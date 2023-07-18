@@ -28,7 +28,7 @@ class TourController extends Controller
             'title' => 'required',
             'image' => 'image|file',
             'desc' => 'required',
-            'video' => 'video|file',
+            'video' => 'mimetypes:video/mp4|file',
         ]);
         if($request->file('image')) {
             $imgName = $request->file('image')->hashName();
