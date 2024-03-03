@@ -16,14 +16,13 @@ class TourResource extends JsonResource
     public function toArray(Request $request): array
     {
         $urlImage = url(Storage::url($this->image));
-        $urlVid = url(Storage::url($this->video));
 
         return [
             'id' => $this->id,
             'title' => $this->title,
             'image' => $urlImage,
             'desc' => $this->desc,
-            'video' => $urlVid,
+            'videoLink' => $this->videoLink,
         ];
     }
 }

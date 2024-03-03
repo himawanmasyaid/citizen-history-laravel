@@ -28,18 +28,14 @@ class TourController extends Controller
             'title' => 'required',
             'image' => 'image|file',
             'desc' => 'required',
-            'video' => 'mimetypes:video/mp4|file',
+            'videoLink' => 'nullable',
         ]);
+        
         if($request->file('image')) {
             $imgName = $request->file('image')->hashName();
             $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
         }
         
-        if($request->file('video')) {
-            $vidName = $request->file('video')->hashName();
-            $validated['video'] = $request->file('video')->storeAs('video', $vidName, 'public');
-        }
-
         Tour::create($validated);
 
 
@@ -52,10 +48,35 @@ class TourController extends Controller
             'tour' => $tour
         ]);
     }
+    
+    function update(Request $request, Tour $tour){
+        $rules = [
+            'title' => 'required',
+            'image' => 'image|file',
+            'desc' => 'required',
+            'videoLink' => 'nullable',
+        ];
+
+        $validated = $request->validate($rules);
+
+        if($request->file('image')) {
+            if($request->oldImage) {
+                Storage::disk('public')->delete($tour->image);
+            }
+            $imgName = $request->file('image')->hashName();
+            $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
+        };
+
+        Tour::where('id', $tour->id)
+            ->update($validated);
+
+            return redirect('/dashboard/tours')->with('success', 'Virtual Tour berhasil diperbarui');
+        
+    }
 
     public function destroy(Tour $tour) {
         if($tour->image) {
-            Storage::disk('public')->delete($tour->video);
+            Storage::disk('public')->delete($tour->image);
         }
 
         Tour::destroy($tour->id);
