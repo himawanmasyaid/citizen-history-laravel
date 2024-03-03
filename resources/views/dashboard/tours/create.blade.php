@@ -53,20 +53,13 @@
                         </div>
                     </div>
 
-                    {{-- video --}}
+                    {{-- video Link --}}
                     <div class="form-group row mb-4 mt-4">
-                        <label for="video" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Video</label>
+                        <label for="videoLink" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Video
+                            Link</label>
                         <div class="col-sm-12 col-md-7">
-                            {{-- <img class="img-preview img-fluid mb-3 col-sm-5">
-                            <input class="form-control @error('id') is-invalid @enderror" type="file" id="video"
-                                name="video" onchange="previewImage()"> --}}
-                            <input class="form-control @error('id') is-invalid @enderror" type="file" id="video"
-                                name="video">
-                            @error('video')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
+                            <input type="text" class="form-control @error('videoLink') is-invalid @enderror"
+                                id="videoLink" name="videoLink" value="{{ old('videoLink') }}">
                         </div>
                     </div>
 

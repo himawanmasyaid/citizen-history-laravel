@@ -18,6 +18,7 @@
 
                         <th scope="col">No</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Video</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -26,9 +27,8 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $tour->title }}</td>
+                        <td>{{ $tour->videoLink }}</td>
                         <td>
-                            {{-- <a href="/dashboard/tours/{{ $tour->id }}" class="badge bg-info"><i
-                                    class="fas fa-eye"></i></a> --}}
                             <a href="/dashboard/tours/{{ $tour->id }}/edit" class="badge bg-warning"><i
                                     class="fas fa-edit"></i></span></a>
                             <form action="/dashboard/tours/{{ $tour->id }}" method="post" class="d-inline">
