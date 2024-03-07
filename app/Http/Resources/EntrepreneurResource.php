@@ -24,7 +24,7 @@ class EntrepreneurResource extends JsonResource
             'image' => $urlImage,
             'desc' => $this->desc,
             'address' => $this->address,
-            'noTelp' => $this->no,
+            'no' => $this->no,
             'maps' => $this->maps,
         ];
     }

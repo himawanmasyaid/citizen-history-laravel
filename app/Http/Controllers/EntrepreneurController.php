@@ -23,14 +23,16 @@ class EntrepreneurController extends Controller
     }
     
     public function store(Request $request) {
-        $validated = $request->validate([
+        $rules = [
             'name' => 'required',
             'image' => 'image|file',
             'desc' =>'required',
             'address' => 'required',
             'no' => 'nullable',
             'maps' => 'nullable'
-        ]);
+        ];
+
+        $validated = $request->validate($rules);
 
         if($request->file('image')) {
             $imgName = $request->file('image')->hashName();
