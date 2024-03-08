@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EntrepreneurController;
+use App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,8 @@ use App\Http\Controllers\EntrepreneurController;
 //     return view('dashboard.dashboard');
 // });
 
-// Route::get('/dashboard/articles', function () {
-//     return view('dashboard.articles.index');
+// Route::get('/dashboard/quizzes', function () {
+//     return view('dashboard.quizzes.index');
 // });
 // Route::get('/dashboard/articles/create', function () {
 //     return view('dashboard.articles.create');
@@ -42,6 +43,7 @@ Route::resource('/dashboard/articles', ArticleController::class)->middleware('au
 Route::resource('/dashboard/entrepreneurs', EntrepreneurController::class)->middleware('auth');
 Route::resource('/dashboard/tours', TourController::class)->middleware('auth');
 Route::resource('/dashboard/users', UserController::class)->middleware('auth');
+Route::resource('/dashboard/quizzes', QuizController::class)->middleware('auth');
 
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');

@@ -19,8 +19,8 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'username' => fake()->unique(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'username' => 'admin',
+            'password' => '$2y$10$4w6HxmNVsbl1cwzutFc/NOxM1dYISWE.ZyTKbHy0tKWuoO2D.YIwG', // password
         ];
     }
 

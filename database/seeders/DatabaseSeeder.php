@@ -21,7 +21,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ArticleSeeder::class,
             EntrepreneurSeeder::class,
-            TourSeeder::class
+            TourSeeder::class,
+            UserSeeder::class,
+            QuizSeeder::class,
+            // ChoiceSeeder::class,
         ]);
     }
 }

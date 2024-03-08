@@ -23,17 +23,4 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
-    // public function store(Request $request) {
-        
-    //     $validated = $request->validate([
-    //         'name' => 'required|max:255',
-    //         'username' => 'required|unique:users',
-    //         'password' => 'required|min:5|max:255'
-    //     ]);
-
-    //     $validated['password'] = bcrypt($validated['password']);
-
-    //     User::create($validated);
-    // }
-
 }

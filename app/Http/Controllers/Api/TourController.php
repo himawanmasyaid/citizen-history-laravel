@@ -23,33 +23,4 @@ class TourController extends Controller
         return new TourResource($tour);
     }
 
-    // public function store(Request $request) {
-        
-    //     $validated = $request->validate([
-    //         'title' => 'required',
-    //         'desc' => 'required',
-    //         'video' => 'video|file',
-    //     ]);
-        
-    //     $vidName = $request->file('video')->hashName();
-    //     $validated['video'] = $request->file('video')->storeAs('video', $vidName, 'public');
-
-    //     Tour::create($validated);
-    // }
-
-    // public function update(Request $request, $id) {
-    //     $validated = $request->validate([
-    //         'title' => 'required',
-    //         'body' => 'required'
-    //     ]);
-
-    //     $tour = Tour::findOrFail($id);
-    //     $tour->update($request->all());
-    // }
-
-    // public function destroy($id) {
-    //     $tour = Tour::findOrFail($id);
-    //     $tour->delete();
-    // }
-
 }

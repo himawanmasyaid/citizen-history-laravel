@@ -17,11 +17,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-resources/views/dashboard/entrepreneurs/create_old.blade.php
-resources/views/dashboard/entrepreneurs/index_old.blade.php
-resources/views/dashboard/entrepreneurs/edit_old.blade.php
-resources/views/dashboard/articles/create_old.blade.php
-resources/views/dashboard/articles/index_old.blade.php
-resources/views/dashboard/articles/edit_old.blade.php
-resources/views/dashboard/users/index_old.blade.php
-resources/views/dashboard/users/add.blade.php

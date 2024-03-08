@@ -31,6 +31,13 @@
           href="/dashboard/entrepreneurs/create"><i class="fas fa-store"></i> <span>Tambah Entrepreneur Baru</span></a>
       </li>
 
+      <li class="menu-header">Quizzes</li>
+      <li><a class="nav-link {{ Request::is('dashboard/quizzes') ? 'active' : '' }} " href="/dashboard/quizzes"><i
+            class="fas fa-store"></i> <span>Semua Quiz</span></a></li>
+      <li><a class="nav-link {{ Request::is('dashboard/quizzes/create') ? 'active' : '' }}"
+          href="/dashboard/quizzes/create"><i class="fas fa-store"></i> <span>Tambah Quiz Baru</span></a>
+      </li>
+
       <li class="menu-header">User</li>
       <li><a class="nav-link {{ Request::is('dashboard/users') ? 'active' : '' }} " href="/dashboard/users"><i
             class="fas fa-user"></i> <span>Semua User</span></a></li>

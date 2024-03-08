@@ -20,39 +20,4 @@ class EntrepreneurController extends Controller
 
         return new EntrepreneurResource($entrepreneurs);
     }
-
-    // public function store(Request $request) {
-    //     $validated = $request->validate([
-    //         'name' => 'required',
-    //         'desc' =>'required',
-    //         'address' => 'required',
-    //         'no' => 'nullable',
-    //         'maps' => 'nullable'
-    //     ]);
-
-    //     Entrepreneur::create($validated);
-    // }
-
-    // public function update(Request $request, $id) {
-        
-    //     $validated = $request->validate([
-    //         'name' => 'required',
-    //         'desc' =>'required',
-    //         'address' => 'required',
-    //         'no' => 'nullable',
-    //         'maps' => 'nullable'
-    //     ]);
-
-    //     Entrepreneur::where('id', $id)
-    //         ->update($validated);
-
-    // }
-
-
-    // public function destroy($id) {
-    //     $article = Entrepreneur::findOrFail($id);
-    //     $article->delete();
-
-    // }
-    
 }
