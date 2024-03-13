@@ -6,7 +6,12 @@
 <div class="alert alert-success col-lg-12" role="alert">
     {{ session('success') }}
 </div>
+@endif
 
+@if (session()->has('error'))
+<div class="alert alert-danger col-lg-12" role="alert">
+    {{ session('error') }}
+</div>
 @endif
 
 <div class="card">
@@ -18,20 +23,22 @@
 
                         <th scope="col">No</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Link</th>
+                        <th scope="col">Desc</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tours as $tour)
+                    @foreach ($categories as $category)
                     <tr>
                         <td class="col-md-1">{{ $loop->iteration }}</td>
-                        <td class="col-md-7">{{ $tour->title }}</td>
-                        <td class="col-md-3">{{ $tour->link }}</td>
-                        <td class="col-md-1">
-                            <a href="/dashboard/tours/{{ $tour->id }}/edit" class="badge bg-warning"><i
+                        <td class="col-md-2">{{ $category->name }}</td>
+                        <td class="col-md-7">{{ $category->desc }}</td>
+                        <td class="col-md-2">
+                            {{-- <a href="/dashboard/categories/{{ $category->id }}" class="badge bg-info"><i
+                                    class="fas fa-eye"></i></a> --}}
+                            <a href="/dashboard/categories/{{ $category->id }}/edit" class="badge bg-warning"><i
                                     class="fas fa-edit"></i></span></a>
-                            <form action="/dashboard/tours/{{ $tour->id }}" method="post" class="d-inline">
+                            <form action="/dashboard/categories/{{ $category->id }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="bagde bg-danger border-0 rounded"

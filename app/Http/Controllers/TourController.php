@@ -28,13 +28,21 @@ class TourController extends Controller
             'title' => 'required',
             'image' => 'image|file',
             'desc' => 'required',
-            'videoLink' => 'nullable',
+            // 'video' => 'mimetypes:video/mp4|file',
+            'link' => 'nullable',
         ]);
         
         if($request->file('image')) {
             $imgName = $request->file('image')->hashName();
             $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
         }
+
+        // if($request->file('video')) {
+        //     $vidName = $request->file('video')->hashName();
+        //     $validated['video'] = $request->file('video')->storeAs('video', $vidName, 'public');
+        // }
+
+        // dd($validated);
         
         Tour::create($validated);
 
@@ -54,7 +62,8 @@ class TourController extends Controller
             'title' => 'required',
             'image' => 'image|file',
             'desc' => 'required',
-            'videoLink' => 'nullable',
+            // 'video' => 'mimetypes:video/mp4|file',
+            'link' => 'nullable',
         ];
 
         $validated = $request->validate($rules);
@@ -67,6 +76,15 @@ class TourController extends Controller
             $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
         };
 
+        // if($request->file('video')) {
+        //     if($request->oldVideo) {
+        //         Storage::disk('public')->delete($tour->video);
+        //     }
+        //     $vidName = $request->file('video')->hashName();
+        //     $validated['video'] = $request->file('video')->storeAs('video', $vidName, 'public');
+        // }
+
+
         Tour::where('id', $tour->id)
             ->update($validated);
 
@@ -78,6 +96,10 @@ class TourController extends Controller
         if($tour->image) {
             Storage::disk('public')->delete($tour->image);
         }
+
+        // if($tour->video) {
+        //     Storage::disk('public')->delete($tour->video);
+        // }
 
         Tour::destroy($tour->id);
         

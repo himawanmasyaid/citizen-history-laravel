@@ -8,6 +8,27 @@
                 <form method="post" action="/dashboard/quizzes" class="mb-5" enctype="multipart/form-data">
                     @csrf
 
+                    {{-- Select Category --}}
+                    <div class="form-group row mb-4 mt-4">
+                        <label for="category"
+                            class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
+                        <div class="col-sm-12 col-md-7">
+                            <select class="form-control @error('category') is-invalid @enderror" name="category"
+                                id="category">
+                                <option selected>Select Category</option>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+
+
                     {{-- question --}}
                     <div class="form-group row mb-4 mt-4">
                         <label for="question"
@@ -16,6 +37,21 @@
                             <textarea class="form-control @error('question') is-invalid @enderror" id="question"
                                 name="question">{{ old('question') }}</textarea>
                             @error('question')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    {{-- image --}}
+                    <div class="form-group row mb-4 mt-4">
+                        <label for="image" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image</label>
+                        <div class="col-sm-12 col-md-4">
+                            <img class="img-preview img-fluid mb-3 col-sm-5">
+                            <input class="form-control @error('id') is-invalid @enderror" type="file" id="image"
+                                name="image" onchange="previewImage()">
+                            @error('image')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -119,4 +155,26 @@
         </div>
     </div>
 </div>
+
+<script>
+    // disable upload image trix
+    // document.addEventListener('trix-file-accept', function(e) {
+    //     e.preventDefault();
+    // })
+
+    function previewImage() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+
+</script>
 @endsection

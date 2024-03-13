@@ -17,6 +17,7 @@
                     <tr>
                         <th>No</th>
                         <th colspan="4">Question</th>
+                        <th>Category</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -25,10 +26,13 @@
                     <tr style="border: 2px solid black">
                         <td class="col-md-1" rowspan="2" style="border: 2px solid black" align="center">{{
                             $loop->iteration }}</td>
-                        <td class="col-md-9" colspan="4">{{ $quiz->question }}</td>
+                        <td class="col-md-7" colspan="4" style="border: 2px solid black">{{
+                            $quiz->question }}</td>
+                        <td class="col-md-2" rowspan="2" style="border: 2px solid black" align="center">{{
+                            $quiz->category->name }}</td>
                         <td class="col-md-2" rowspan="2" style="border: 2px solid black" align="center">
-                            {{-- <a href="/dashboard/quizzes/{{ $quiz->id }}" class="badge bg-info"><i
-                                    class="fas fa-eye"></i></a> --}}
+                            <a href="/dashboard/quizzes/{{ $quiz->id }}" class="badge bg-info"><i
+                                    class="fas fa-eye"></i></a>
                             <a href="/dashboard/quizzes/{{ $quiz->id }}/edit" class="badge bg-warning"><i
                                     class="fas fa-edit"></i></span></a>
                             <form action="/dashboard/quizzes/{{ $quiz->id }}" method="post" class="d-inline">

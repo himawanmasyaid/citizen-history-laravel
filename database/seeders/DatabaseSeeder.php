@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             EntrepreneurSeeder::class,
             TourSeeder::class,
             UserSeeder::class,
-            QuizSeeder::class,
-            // ChoiceSeeder::class,
+            CategorySeeder::class,
+            // QuizSeeder::class,
         ]);
     }
 }

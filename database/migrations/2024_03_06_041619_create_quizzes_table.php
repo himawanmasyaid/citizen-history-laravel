@@ -13,12 +13,17 @@ return new class extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
-            $table->string('question');
+            $table->foreignId('category_id')->unsigned()->nullable()->default(1);
+            // $table->foreignId('category_id')->nullable()->default(1)->constrained();
+            // $table->unsignedBigInteger('category_id');
+            $table->text('question');
+            $table->string('image')->nullable();
             $table->string('optionA');
             $table->string('optionB');
             $table->string('optionC');
             $table->string('optionD');
-            $table->string('correctAnswer')->nullable();
+            $table->string('correctAnswer');
+            // $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

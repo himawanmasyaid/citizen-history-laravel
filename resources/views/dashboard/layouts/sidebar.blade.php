@@ -37,6 +37,11 @@
       <li><a class="nav-link {{ Request::is('dashboard/quizzes/create') ? 'active' : '' }}"
           href="/dashboard/quizzes/create"><i class="fas fa-file"></i> <span>Tambah Quiz Baru</span></a>
       </li>
+      <li><a class="nav-link {{ Request::is('dashboard/categories') ? 'active' : '' }} " href="/dashboard/categories"><i
+            class="fas fa-file"></i> <span>Semua Category</span></a></li>
+      <li><a class="nav-link {{ Request::is('dashboard/categories/create') ? 'active' : '' }}"
+          href="/dashboard/categories/create"><i class="fas fa-file"></i> <span>Tambah Category Baru</span></a>
+      </li>
 
       <li class="menu-header">User</li>
       <li><a class="nav-link {{ Request::is('dashboard/users') ? 'active' : '' }} " href="/dashboard/users"><i

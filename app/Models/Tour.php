@@ -10,6 +10,7 @@ class Tour extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'image', 'desc', 'videoLink'
+        'title', 'image', 'desc', 'link'
+        // 'title', 'image', 'desc', 'video', 'link'
     ];
 }

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use App\Http\Controllers\Controller;
-use App\Models\Choice;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class QuizController extends Controller
 {
@@ -16,17 +17,13 @@ class QuizController extends Controller
             'quizzes' => Quiz::all(),
         ]);
 
-        $quizzes = Quiz::all();
-
-        foreach ($quizzes as $quiz) {
-            $quiz->correct_answer_bg = $this->getCorrectOptionBackground($quiz->correctAnswer);
-        }
     }
 
     public function create()
     {
         return view('dashboard.quizzes.create', [
-            'title' => 'Add new quiz'
+            'title' => 'Add new quiz',
+            'categories' => Category::all()
         ]);
     }
 
@@ -34,6 +31,8 @@ class QuizController extends Controller
     {
         $validated = $request->validate([
             'question' => 'required',
+            'category' => 'nullable|exists:categories,id',
+            'image' => 'nullable',
             'optionA' =>'required',
             'optionB' => 'required',
             'optionC' => 'required',
@@ -41,6 +40,15 @@ class QuizController extends Controller
             'correctAnswer' => 'required|in:optionA,optionB,optionC,optionD'
         ]);
 
+        if($request->file('image')) {
+            $imgName = $request->file('image')->hashName();
+            $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
+        }
+
+        $validated['category_id'] = $request->input('category') ?? 1; // Default to category with ID 1
+
+
+        // dd($validated);
         Quiz::create($validated);
 
         return redirect('/dashboard/quizzes')->with('success', 'Quiz Berhasil Ditambahkan');
@@ -48,14 +56,18 @@ class QuizController extends Controller
 
     public function show(Quiz $quiz)
     {
-        //
+        return view('dashboard.quizzes.show', [
+            'title' => $quiz->title,
+            'quiz' => $quiz
+        ]);
     }
 
     public function edit(Quiz $quiz)
     {
         return view('dashboard.quizzes.edit', [
             'title' => 'Edit Quiz',
-            'quiz'  => $quiz
+            'quiz'  => $quiz,
+            'categories' => Category::all()
         ]);
     }
 
@@ -63,6 +75,8 @@ class QuizController extends Controller
     {
         $validated = $request->validate([
             'question' => 'required',
+            'category' => 'nullable|exists:categories,id',
+            'image' => 'nullable',
             'optionA' =>'required',
             'optionB' => 'required',
             'optionC' => 'required',
@@ -71,14 +85,27 @@ class QuizController extends Controller
             
         ]);
 
-        Quiz::where('id', $quiz->id)
-            ->update($validated);
+        if($request->file('image')) {
+            $imgName = $request->file('image')->hashName();
+            $validated['image'] = $request->file('image')->storeAs('image', $imgName, 'public');
+        }
+
+        $validated['category_id'] = $request->input('category') ?? 1; // Default to category with ID 1
+
+        // dd($validated);
+        $quiz->update($validated);
+        // Quiz::where('id', $quiz->id)
+        //     ->update($validated);
 
         return redirect('/dashboard/quizzes')->with('success', 'Quiz Berhasil Diperbarui');
     }
 
     public function destroy(Quiz $quiz)
     {
+        if($quiz->image) {
+            Storage::disk('public')->delete($quiz->image);
+        }
+
         Quiz::destroy($quiz->id);
 
         return redirect('/dashboard/quizzes')->with('success', 'Quiz Berhasil Dihapus');

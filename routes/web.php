@@ -6,6 +6,7 @@ use App\Http\Controllers\TourController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EntrepreneurController;
 use App\Http\Controllers\QuizController;
@@ -44,6 +45,7 @@ Route::resource('/dashboard/entrepreneurs', EntrepreneurController::class)->midd
 Route::resource('/dashboard/tours', TourController::class)->middleware('auth');
 Route::resource('/dashboard/users', UserController::class)->middleware('auth');
 Route::resource('/dashboard/quizzes', QuizController::class)->middleware('auth');
+Route::resource('/dashboard/categories', CategoryController::class)->middleware('auth');
 
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');

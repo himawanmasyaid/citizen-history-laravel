@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\EntrepreneurController;
 use App\Http\Controllers\Api\QuizController;
 use App\Http\Controllers\Api\TourController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,4 @@ Route::apiResource('entrepreneurs', EntrepreneurController::class);
 Route::apiResource('quizzes', QuizController::class);
 Route::apiResource('tours', TourController::class);
 Route::apiResource('users', UserController::class);
+Route::apiResource('categories', CategoryController::class);

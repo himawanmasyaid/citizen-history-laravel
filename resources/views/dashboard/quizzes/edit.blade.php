@@ -10,6 +10,34 @@
                     @method('put')
                     @csrf
 
+                    {{-- Select Category --}}
+                    <div class="form-group row mb-4 mt-4">
+                        <label for="category"
+                            class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
+                        <div class="col-sm-12 col-md-7">
+                            <select class="form-control @error('category') is-invalid @enderror" name="category"
+                                id="category">
+
+                                @foreach($categories as $category)
+
+                                @php
+                                $isCategory = $quiz->category_id === $category->id;
+                                $selected = $isCategory ? 'selected' : ' ';
+                                @endphp
+
+
+                                <option value="{{ $category->id }}" {{ $selected }}>{{ $category->name }}</option>
+                                @endforeach
+
+                            </select>
+                            @error('category')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+
                     {{-- question --}}
                     <div class="form-group row mb-4 mt-4">
                         <label for="question"

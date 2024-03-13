@@ -4,26 +4,22 @@
 <div class="container-fluid">
     <div class="row card">
         <div class="col-lg-8 ">
+            <a href="/dashboard/articles" class="btn bg-info mb-3 mt-3">Kembali</a>
+            <a href="/dashboard/articles/{{ $article->id }}/edit" class="btn bg-warning mb-3 mt-3">Edit</a>
+            <form action="/dashboard/articles/{{ $article->id }}" method="post" class="d-inline">
+                @method('delete')
+                @csrf
+                <button class="btn btn-danger mb-3 mt-3" onclick="return confirm('Are you sure ?')">Hapus</button>
+            </form>
             <article>
-                <a href="/dashboard/articles" class="btn bg-info mb-3">Kembali</a>
-                <a href="/dashboard/articles/{{ $article->id }}/edit" class="btn bg-warning mb-3">Edit</a>
-                <form action="/dashboard/articles/{{ $article->id }}" method="post" class="d-inline">
-                    @method('delete')
-                    @csrf
-                    <button class="btn btn-danger mb-3" onclick="return confirm('Are you sure ?')">Hapus</button>
-                </form>
 
                 @if ($article->image)
-                <img src="{{ asset('storage/' . $article->image) }}" class="card-img" alt="{{ $article->food }}">
-                @else
-                <img src="https://source.unsplash.com/1200x400?{{ $article->food }}" class="card-img"
-                    alt="{{ $article->food }}">
+                <img src="{{ asset('storage/' . $article->image) }}" style="width:50%;height:auto">
                 @endif
 
                 <p>{!! $article->body !!}</p>
             </article>
 
-            <a href="/dashboard/articles">Back</a>
         </div>
     </div>
 </div>
