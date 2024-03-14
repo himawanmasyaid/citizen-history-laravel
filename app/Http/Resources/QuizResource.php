@@ -23,7 +23,7 @@ class QuizResource extends JsonResource
             'optionB' => $this->optionB,
             'optionC' => $this->optionC,
             'optionD' => $this->optionD,
-            // 'correctAnswer' => $this->correctAnswer
+            'correctAnswer' => $this->correctAnswer
         ];
     }
 }
