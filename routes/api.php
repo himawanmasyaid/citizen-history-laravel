@@ -30,3 +30,4 @@ Route::apiResource('quizzes', QuizController::class);
 Route::apiResource('tours', TourController::class);
 Route::apiResource('users', UserController::class);
 Route::apiResource('categories', CategoryController::class);
+Route::get('/quizzes/categories/{category_id}', [QuizController::class, 'showQuizzesByCategory']);

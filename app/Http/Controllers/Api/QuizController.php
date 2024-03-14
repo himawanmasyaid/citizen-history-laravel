@@ -20,4 +20,12 @@ class QuizController extends Controller
 
         return new QuizResource($quizzes);
     }
+
+    public function showQuizzesByCategory(Request $request, $categoryId)
+    {
+        $quizzes = Quiz::where('category_id', $categoryId)->get();
+
+        return QuizResource::collection($quizzes);
+    }
+
 }
