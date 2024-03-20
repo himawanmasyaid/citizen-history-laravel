@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class QuizResource extends JsonResource
 {
@@ -14,11 +15,13 @@ class QuizResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $urlImage = url(Storage::url($this->image));
+
         return [
             'id' => $this->id,
             'question' => $this->question,
             'category' => $this->category->name,
-            'image' => $this->image,
+            'image' => $urlImage,
             'optionA' => $this->optionA,
             'optionB' => $this->optionB,
             'optionC' => $this->optionC,

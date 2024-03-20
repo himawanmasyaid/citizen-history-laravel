@@ -22,7 +22,7 @@ class TourResource extends JsonResource
             'title' => $this->title,
             'image' => $urlImage,
             'desc' => $this->desc,
-            'videoLink' => $this->videoLink,
+            'link' => $this->link,
         ];
     }
 }

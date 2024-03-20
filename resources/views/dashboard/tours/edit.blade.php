@@ -91,7 +91,7 @@
                     <div class="form-group row mb-4">
                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                         <div class="col-sm-12 col-md-7">
-                            <button type="submit" class="btn btn-primary">Create Virtual Tour</button>
+                            <button type="submit" class="btn btn-primary">Edit Virtual Tour</button>
                         </div>
                     </div>
                 </form>
