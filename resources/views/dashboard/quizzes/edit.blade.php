@@ -53,6 +53,28 @@
                         </div>
                     </div>
 
+                    {{-- image --}}
+                    <div class="form-group row mb-4 mt-4">
+                        <label for="image" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image</label>
+                        <div class="col-sm-12 col-md-4">
+                            <input type="hidden" name="oldImage" value="{{ $quiz->image }}">
+                            @if ($quiz->image)
+                            <img src="{{ asset('storage/' . $quiz->image) }}"
+                                class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                            @else
+                            <img class="img-preview img-fluid mb-3 col-sm-5">
+                            @endif
+                            <img class="img-preview img-fluid mb-3 col-sm-5">
+                            <input class="form-control @error('id') is-invalid @enderror" type="file" id="image"
+                                name="image" onchange="previewImage()">
+                            @error('image')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+
                     {{-- option A --}}
                     <div class="form-group row mb-4 mt-4">
                         <label for="optionA" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Option

@@ -15,18 +15,27 @@ class QuizResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $urlImage = url(Storage::url($this->image));
+        
 
-        return [
+        $data = [
             'id' => $this->id,
             'question' => $this->question,
             'category' => $this->category->name,
-            'image' => $urlImage,
+            // 'image' => $urlImage,
             'optionA' => $this->optionA,
             'optionB' => $this->optionB,
             'optionC' => $this->optionC,
             'optionD' => $this->optionD,
             'correctAnswer' => $this->correctAnswer
         ];
+
+        if ($this->image)
+        {
+            $data['image'] = url(Storage::url($this->image));
+        } else {
+            $data['image'] = $this->image;
+        }
+        
+        return $data;
     }
 }
