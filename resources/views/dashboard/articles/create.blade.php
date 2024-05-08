@@ -41,7 +41,7 @@
 
                     {{-- body --}}
                     <div class="form-group row mb-4 mt-4">
-                        <label for="body" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Body</label>
+                        <label for="body" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi</label>
                         <div class="col-sm-12 col-md-7">
                             @error('body')
                             <p class="text-danger">{{ $message }}</p>

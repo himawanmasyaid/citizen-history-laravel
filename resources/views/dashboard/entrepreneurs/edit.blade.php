@@ -47,7 +47,7 @@
                     </div>
 
                     {{-- desc --}}
-                    <div class="form-group row mb-4 mt-4">
+                    <!-- <div class="form-group row mb-4 mt-4">
                         <label for="desc" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Desc</label>
                         <div class="col-sm-12 col-md-7">
                             <textarea class="form-control @error('desc') is-invalid @enderror" id="desc"
@@ -57,6 +57,30 @@
                                 {{ $message }}
                             </div>
                             @enderror
+                        </div>
+                    </div> -->
+
+                    {{-- desc --}}
+                    <!-- <div class="form-group row mb-4 mt-4">
+                        <label for="desc" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi</label>
+                        <div class="col-sm-12 col-md-7">
+                            @error('desc')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                            <input id="desc" type="hidden" name="desc" value="{{ old('desc') }}">
+                            <trix-editor input="desc"></trix-editor>
+                        </div>
+                    </div> -->
+
+                    {{-- desc --}}
+                    <div class="form-group row mb-4 mt-4">
+                        <label for="desc" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi</label>
+                        <div class="col-sm-12 col-md-7">
+                            @error('body')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                            <input id="desc" type="hidden" name="desc" value="{{ old('desc', $entrepreneur->desc) }}">
+                            <trix-editor input="desc"></trix-editor>
                         </div>
                     </div>
 
